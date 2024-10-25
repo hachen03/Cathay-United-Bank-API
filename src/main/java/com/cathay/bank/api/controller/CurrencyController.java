@@ -29,13 +29,13 @@ public class CurrencyController {
         return currencyService.findAll();
     }
 	
-	
+	// 新增幣別
     @PostMapping
     public Currency createCurrency(@RequestBody Currency currency) {
         return currencyService.create(currency);
     }
 
-    
+    // 查詢單筆幣別
     @GetMapping("/{id}")
     public ResponseEntity<Currency> getCurrencyById(@PathVariable Long id) {
         return currencyService.findById(id)
@@ -43,13 +43,13 @@ public class CurrencyController {
                 .orElse(ResponseEntity.notFound().build());
     }
 
-    
+    // 修改幣別
     @PutMapping("/{id}")
     public ResponseEntity<Currency> updateCurrency(@PathVariable Long id, @RequestBody Currency currencyDetails) {
         return ResponseEntity.ok(currencyService.update(id, currencyDetails));
     }
 
-   
+    // 刪除幣別
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> deleteCurrency(@PathVariable Long id) {
         currencyService.delete(id);
